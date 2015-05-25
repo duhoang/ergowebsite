@@ -10,6 +10,8 @@ $width: 1280px;
 
 $min-height: 640px;
 
+$dark-blue: #003763;
+
 
 *, *:before, *:after {
     box-sizing:border-box;
@@ -233,12 +235,12 @@ html, body {
 
 }
 
-.about__single--line1, .about__single--line2 {
+.about__single--line1, .about__single--line2, .about__segmented--line2, .about__segmented--lineblue2 {
     width: 0%;
 }
 
-.about__single--line2,  .about__single--lineblue2{
-    left: 50%;
+.about__single--line2,  .about__single--lineblue2, .about__segmented--line2, .about__segmented--lineblue2{
+    left: 60%;
 }
 
 .about__single--text {
@@ -249,14 +251,175 @@ html, body {
     padding: 20px 0;
 }
 
-.about__single--line--angle {
-    width: 15px;
+.white-line-angle {
+    width: 140px;
     height: 0;
-    background: $white;
+    overflow: hidden;
     position: absolute;
     top: 50%;
-    left: 38%;
-    transform: skewX(45deg);
+    left: 36%;
+
+    &:before {
+        content:"";
+        position: absolute;
+        width:15px;
+        background: $white;
+        height: 50px;
+        transform: skew(45deg) translateX(25px);
+    }
+}
+
+.blue-line-angle {
+    width: 140px;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 36%;
+
+    &:before {
+        content:"";
+        position: absolute;
+        width:3px;
+        background: $dark-blue;
+        height: 50px;
+        transform: skew(45deg) translateX(31px);
+    }
+}
+
+.about__leter {
+    position: absolute;
+}
+
+.about__single--a {
+    top: 50%;
+    left: 36%;
+    transform: translate(50px, 60px);
+}
+
+.about__segmented--a {
+    top: 50%;
+    left: 27%;
+    transform: translate(50px, 60px);
+}
+
+.about__segmented--b {
+    top: 50%;
+    left: 50%;
+    transform: translate(50px, 60px);
+}
+
+
+.about__segmented--angle1, .about__segmented--angle1--blue {
+    left: 27%;
+}
+
+.about__segmented--angle2, .about__segmented--angle2--blue {
+    left: 50%;
+
+}
+
+.about__dynamic--angle1, .about__dynamic--angle1--blue {
+    left: 35%;
+}
+
+.about__dynamic--angle1 {
+    &:before {
+        height: 100px;
+        transform: skew(45deg) translateX(50px);
+    }
+}
+
+.about__dynamic--angle1--blue {
+    &:before {
+        height: 100px;
+        transform: skew(45deg) translateX(56px);
+    }
+}
+
+.about__dynamic--angle2 {
+    &:before {
+        top: 40px;
+        left: -1px;
+        height: 30px;
+        transform: skew(-45deg) translateX(15px) ;
+    }
+
+    &.blue-line-angle {
+        &:before {
+            transform: skew(-45deg) translateX(20px) ;
+        }
+    }
+}
+
+
+
+.line-rotate-box {
+    width: 140px;
+    height: 140px;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 36%;
+}
+
+.line-rotate--angle {
+    width: 140px;
+    height: 140px;
+    transform-origin: 0px 0px;
+    transform: rotate(-75deg);
+    top: 28px;
+    left: 16px;
+    position: absolute;
+    overflow: hidden;
+
+    &:before {
+        content:"";
+        height: 110px;
+        width: 10px;
+        background: $white;
+        position: absolute;
+        transform: skewY(-15deg);
+    }
+}
+
+.about__dynamic--angle3 {
+    .line-rotate--angle.blue-line {
+
+        &:before {
+            width: 2px;
+            height: 109px;
+            background: $dark-blue;
+            transform: skewY(-15deg) translate(4px, 3px);
+        }
+
+    }
+}
+
+.about__dynamic--angle4 {
+
+    .line-rotate--angle {
+        top: 53px;
+        left: 45px;
+        transform: rotate(15deg);
+
+        &:before {
+            width: 12px;
+            height: 60px;
+            transform: skewY(-15deg);
+        }
+
+        &.blue-line {
+            &:before {
+                width: 2px;
+                height: 61px;
+                background: $dark-blue;
+                transform: skewY(-15deg) translate(5px, 0);
+            }
+        }
+
+    }
+    
 }
 
 
@@ -301,4 +464,67 @@ html, body {
     transform: translate(-50%, -50%);
     background: radial-gradient(#182a39, #000000);
 }
+
+.about__end--bubble {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background: rgba(#0074c8, .5);
+    border-radius: 50%;
+    overflow: hidden;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+ 
+    white-space: nowrap;
+}
+
+.bubble__email {
+    top: 8%;
+    left: 30%;
+    opacity: .5;
+}
+
+.bubble__website {
+    top: 88%;
+    left: 30%;
+    opacity: .5;
+}
+
+.bubble__mobile {
+    top: 30%;
+    left: 18%;
+}
+
+.bubble__agent {
+    top: 75%;
+    left: 15%;
+}
+
+.bubble__video {
+    top: 18%;
+    left: 75%;
+}
+
+.bubble__social {
+    top: 35%;
+    left: 80%;
+    opacity: .5;
+}
+
+.bubble__tradeshow {
+    top: 60%;
+    left: 82%;
+
+    opacity: .5;
+    white-space: normal !important;
+
+   
+}
+
+.bubble__seo {
+    top: 88%;
+    left: 70%;
+}
+
+
 

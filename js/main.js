@@ -203,7 +203,6 @@ function scrollScenes(state) {
             $(".scene-scroll").css({left: scrollLeft * -screenWidth});
             
         }  
-        //var prevScene = state.section.scenes[currentScene.index - 1];
         var nextScene = state.section.scenes[currentScene.index + 1];
 
         var animateObjects = currentScene.objects.concat(nextScene ? nextScene.objects : []);
