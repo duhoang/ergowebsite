@@ -1,0 +1,91 @@
+/* _variables.scss */
+
+$white: #ffffff;
+$gray1: #f5f5f5;
+$gray2: #e2e2e2;
+$gray3: #c7c7c7;
+$gray4: #a7a7a7;
+$gray5: #868686;
+$gray6: #666666;
+$gray7: #4a4a4a;
+$gray8: #323232;
+$gray9: #202020;
+$black: #000000;
+
+$blue1: #bfe8ff;
+$blue2: #7fd0ff;
+$blue3: #40b9ff;
+$blue4: #00a2ff; //main blue  
+$blue5: #108adf;
+$blue6: #2071bf;
+$blue7: #3059a0;
+$blue8: #404180; //main dark blue
+
+$adfin-blue-light: #62b6e7;
+$adfin-blue-dark: #2a2b69;
+
+$low6: #e12500;
+$low5: #f0400d;
+$low4: #fd722f;
+$low3: #ffa256;
+$low2: #ffc26c;
+$low1: #ffdd7d;
+$neutral: #e2e2e2;
+$high1: #ebfa79;
+$high2: #cff269;
+$high3: #afe352;
+$high4: #84ce34;
+$high5: #56b412;
+$high6: #379d00;
+
+$low6-border: #a91c00;
+$low5-border: #b4300a;
+$low4-border: #be5523;
+$low3-border: #bf7940;
+$low2-border: #bf9151;
+$low1-border: #bfa65e;
+$neutral-border: #a9a9a9;
+$high1-border: #b0bb5b;
+$high2-border: #9bb54f;
+$high3-border: #83aa3d;
+$high4-border: #639a27;
+$high5-border: #40870d;
+$high6-border: #297600;
+
+$facebook-color: #3b5a9a;
+$google-color: #dd4c39;
+$twitter-color: #2daae1;
+$linkedin-color: #007bb6;
+
+$text-black: $gray8;
+$text-gray: $gray6;
+$text-light: $gray5;
+
+/* Font Families */
+
+$helvetica: Helvetica,  sans-serif;
+$ubuntu:'Ubuntu', sans-serif;
+
+/* Font Sizes */
+
+$text-xxsmall:10px;
+$text-xsmall:11px;
+$text-small:12px;
+$text-med:13px;
+$text-big:15px;
+$text-xbig:19px;
+$text-xxbig:24px;
+$text-xxxbig:30px;
+$text-xxxxbig:40px;
+$text-xxxxxbig:50px;
+
+/* Responsive Break Points */
+
+$bp-mobile:480px;
+$bp-mobile2:640px;
+$bp-narrow:768px;
+$bp-narrow1:840px;
+$bp-narrow2:960px;
+$bp-regular:1024px;
+$bp-regular2:1280px;
+$bp-wide:1440px;
