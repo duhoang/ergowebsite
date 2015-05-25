@@ -233,15 +233,11 @@ html, body {
 
 }
 
-.about__single {
-    border: 4px solid red;
-}
-
 .about__single--line1, .about__single--line2 {
     width: 0%;
 }
 
-.about__single--line2 {
+.about__single--line2,  .about__single--lineblue2{
     left: 50%;
 }
 
@@ -288,5 +284,21 @@ html, body {
     height: 2px;
     transform: translateY(-50%);
     background: #003763;
+}
+
+.scene-static {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.home-bg {
+    position: absolute;
+    width: 150%;
+    padding-bottom: 150%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(#182a39, #000000);
 }
 
