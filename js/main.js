@@ -1,4 +1,4 @@
-var width, height, screenWidth, scrollSum;
+var width, height, screenWidth, scrollSum, lastSectionIndex = -1;
 
 var sections = [];
 
@@ -26,11 +26,15 @@ var initSections = function() {
 
             var val = parseFloat($(elem).attr("data-duration"));
 
-            return {    index: index, 
+            var stop = $(elem).attr("data-stop"); 
+
+            return {    
+                        index: index, 
                         duration: val,
                         offset: offset,
                         start: index + offset,
-                        end: index + offset + val
+                        end: index + offset + val,
+                        navStopPoint: stop ? parseFloat(stop) : 0
                     }
         }
 
@@ -50,7 +54,7 @@ var initSections = function() {
 
                 var sceneData = dataDuration(scene, j, sceneOffset);
 
-                var aniObjects = $(scene).find(".ani-object");
+                var aniObjects = $(scene).find(".animate-object");
 
                 if (aniObjects.length > 0) {
 
@@ -60,13 +64,17 @@ var initSections = function() {
 
                         var aniObject = this;
 
+                        var callFunc = $(aniObject).attr("data-callfunc") ? eval('({' + $(aniObject).attr("data-callfunc") + '})') : null;
+
                         sceneData.objects.push({
                             elem: aniObject,
                             duration: parseFloat($(aniObject).attr("data-duration")),
                             start: parseFloat($(aniObject).attr("data-start")),
                             styleStart: eval('({' + $(aniObject).attr("data-style-start") + '})'),
                             styleEnd: eval('({' + $(aniObject).attr("data-style-end") + '})'),
-                            isAnimating: true
+                            isAnimating: true,
+                            callFunc: callFunc,
+                            callFuncActive: false
                         });
 
                     });
@@ -97,7 +105,12 @@ function setSize(){
     height = Math.max($(".view").outerHeight(), 640);
     
     $(".section").outerWidth(width);
+    $(".scroll-horizontal").outerWidth(width * $(".section").length);
+    
     $(".scene").outerWidth(screenWidth);
+    $(".scene-scroll").each(function(){
+        $(this).outerWidth(screenWidth * $(this).find(".scene").length);
+    });
 
     resizeBG();
 
@@ -113,27 +126,44 @@ function setSize(){
 
         $(window).scrollTop(adjustScroll);
     } 
+
+    if ($(window).scrollTop() != 0) {
+        setScrollPosition();
+    }
         
-    setScrollPosition();
 }
 
 function resizeBG(){
 
     var svgWidth = $("svg.bg").first().outerWidth();
 
-    var isWide = (svgWidth/height >= 25/9) ? true : false;
+    var isWide = (svgWidth/height > 25/9) ? true : false;
 
     var bgWidth = isWide ? svgWidth :(25 * height)/9;
 
     var bgHeight = isWide ? (9 * bgWidth)/25 : height;
 
-    var widthOffset = isWide ? 0 : (svgWidth - bgWidth)/2;
+    var scale = isWide ? bgHeight/900 : bgWidth/2500;
 
-    var heightOffset = isWide ? (height - bgHeight)/2 : 0;
+    var xPos = isWide ? 0 : (svgWidth - bgWidth)/2;
 
-    $(".bg image").attr({width: bgWidth, height: bgHeight, x: widthOffset, y: heightOffset});
+    var yPos = isWide ? (height - bgHeight)/2 : 0;
 
-    $("#clip-poly").attr("points", (svgWidth-width)+",0 0,"+(bgHeight)+" "+bgWidth+","+(bgHeight)+" "+bgWidth+","+0)
+
+    $(".bg__wrap").attr({transform: "scale("+scale+") translate("+xPos+","+yPos+")"});
+
+    $("#clip-poly").attr("points", (svgWidth-width)+",0 0,"+height+" "+bgWidth+","+height+" "+bgWidth+","+0)
+
+    
+
+    $(".lines__svg").each(function(){
+
+        var widthRatio = (parseFloat($(this).attr("data-width")) - (xPos/10))/2500 ;
+        var heightRatio = (parseFloat($(this).attr("data-height")) - (yPos/10))/900;
+
+        $(this).attr({width: bgWidth * widthRatio , height: bgHeight * heightRatio, transform:"translate("+0+", 0)"});
+
+    });
 
 }
 
@@ -149,6 +179,10 @@ function setScrollPosition(){
 
     var currentSection = _.find(sections, function(d) { return d.start <= scrollAt && d.end >= scrollAt;});
 
+    var sectionChanged = !!(currentSection.index != lastSectionIndex);
+
+    lastSectionIndex = currentSection.index;
+
     var pauseScroll = function(){ return !!(currentSection.end - scrollAt > 1) };
 
     if ( pauseScroll() ) {
@@ -156,11 +190,6 @@ function setScrollPosition(){
         //Freeze on a section and scroll/animate inner scenes
 
         $(".scroll-horizontal").css({left: currentSection.index * -(width)})
-
-        scrollScenes({
-            section: currentSection,
-            scrollAt: scrollAt
-        });
         
     }
     else {
@@ -173,12 +202,21 @@ function setScrollPosition(){
         $(".scroll-horizontal").css({left: scrollLeft * -width});
 
     }
+
+    //Scroll inner scenes
+    if (currentSection.scenes) {
+        scrollScenes({
+            section: currentSection,
+            scrollAt: scrollAt,
+            createNav: sectionChanged
+        });
+    } else {
+        $(".nav-scenes").html("");
+    }
 }
 
 function onScroll() {
-
     setScrollPosition();
-    
 }
 
 function scrollScenes(state) {
@@ -215,14 +253,14 @@ function scrollScenes(state) {
 
             d.end = d.start + d.duration;
 
-            if (d.start <= sceneAt + 1 && d.end >= sceneAt) {
+            if (d.start <= sceneAt && d.end >= sceneAt) {
 
                 _.each(d.styleStart, function(v, k){
 
                     var unit = (typeof d.styleStart[k] === "string") ? d.styleStart[k].match(/\D+$/)[0] : 0;
 
                     var getNum = function(n) { 
-                        return (typeof n === "string") ? parseFloat(n.match(/\d+/)[0]) : n;
+                        return (typeof n === "string") ? parseFloat(n.match(/-?\d+/)[0]) : n;
                     }
 
                     var startVal = getNum(d.styleStart[k]);
@@ -240,6 +278,13 @@ function scrollScenes(state) {
                 $(d.elem).css(transformObj);
 
                 d.isAnimating = true;
+
+                if (d.callFunc && !d.callFuncActive) {
+                    
+                    window[d.callFunc.call](d.callFunc.cls, d.callFunc.activate);
+
+                    d.callFuncActive = true;
+                }
             } 
             else if (d.isAnimating) {
 
@@ -248,17 +293,93 @@ function scrollScenes(state) {
                 $(d.elem).css(transformObj);
 
                 d.isAnimating = false;
+
+                if (d.start > sceneAt && d.callFuncActive) {
+
+                    window[d.callFunc.call](d.callFunc.cls, (d.callFunc.activate==="true" ? "false" : "true"));
+
+                    d.callFuncActive = false;
+                }
             }
 
         });
+
+        if (state.createNav) {
+            createNavScenes({
+                currenSectionIndex: state.section.index,
+                scenes: state.section.scenes,
+                currentScene: currentScene,
+                sceneAt: sceneAt
+            });
+        } else {
+            $(".nav-scenes__item").removeClass("active").eq(currentScene.index).addClass("active");
+        }
     
+    } 
+}
+
+function createNavScenes(state) {
+
+    $(".nav-scenes").html("");
+
+    _.each(state.scenes, function(d, i){
+        
+        var isActive = state.currentScene.index === d.index ? "active":"";
+
+        $(".nav-scenes").append("<div class='nav-scenes__item "+isActive+"' data-section="+state.currenSectionIndex+" data-scene="+(d.offset + d.navStopPoint + (i > 0 ? state.scenes[i-1].duration : 0))+"></div>");
+    });
+
+    $(".nav-scenes__item").on("click", function(){
+        scrollToSection($(this).attr("data-section"), $(this).attr("data-scene"))
+    });
+}
+
+function scrollToSection(section, scene) {
+    $("html, body").animate({scrollTop:scene * (height + 1) }, 1000);
+}
+
+
+function animatePeople(cls, activate) {
+
+    if (!cls) {return};
+
+    var bg = document.getElementById("people-highlight__mask");
+ 
+    if (activate === "true") {
+        
+        bg.classList.add(cls);
+
+        $("."+cls+", .bg-wrapper").addClass("active");
+    } else {
+        
+        bg.classList.remove(cls);
+        
+        $("."+cls+", .bg-wrapper").removeClass("active");
     }
 }
 
+function showSubNav() {
+    $(".nav-scenes").addClass("active");
+}
 
 $(function() {
 
     init();
+
+    if($(window).scrollTop() < height/150) {
+        $(".home__title__cell").addClass("animateIntro");
+        $(".home__title__line, .home__title__circle").on('animationend webkitAnimationEnd oAnimationEnd', function() {
+            $(this).addClass('active');
+        });
+    } else {
+        $(".home__title__line, .home__title__circle").addClass("active");
+    }
+
+    $(".home__title__circle").on("click", function(){
+        $("html, body").animate({scrollTop:1.5 * (height + 1) }, 1000);
+    });
     
 });
+
+
 

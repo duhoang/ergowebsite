@@ -16,15 +16,62 @@
             <clipPath id="clipping">
               <polygon id="clip-poly" points="250,0 0,1000 1000,1000 1000,0 "></polygon>
             </clipPath>
-          </defs>
+
+            <mask id="people-highlight__mask" class="svg__mask" x="0" y="0" width="2500" height="900" >
+
+                <rect class="person person__1" x="630" y="560" width="68" height="120"
+                    />
+                <rect class="person person__2" x="617" y="723" width="143" height="176"
+    />
+
+                <rect class="person person__3" x="719" y="588" width="68" height="117"
+    />
+                <rect class="person person__4" x="874" y="820" width="122" height="80"
+    />
+
+                <rect class="person person__5" x="918" y="505" width="38" height="71"
+    />
+                <rect class="person person__6" x="950" y="630" width="86" height="176"
+    />
+
+                <rect class="person person__7" x="1023" y="593" width="51" height="117"
+    />
+                <rect class="person person__8" x="1090" y="593" width="67" height="138"
+    />
+
+                <rect class="person person__9" x="1214" y="565" width="44" height="92"
+    />
+                <rect class="person person__10" x="1232" y="689" width="76" height="158"
+    />
+                <rect class="person person__11" x="1309" y="597" width="50" height="138"
+    />
+                
+                <rect class="person person__12" x="1386" y="660" width="51" height="124"
+    />
+
+                <rect class="person person__13" x="1456" y="502" width="34" height="62"
+    />
+                <rect class="person person__14" x="1520" y="606" width="65" height="150"
+    />
+
+                <rect class="person person__15" x="1635" y="800" width="138" height="100"
+    />
+                <rect class="person person__16" x="1751" y="602" width="75" height="144"
+    />
+
+            </mask>
+        </defs>
         </svg>       
 
         <div class="view">
             <div class="ergo-logo">
                 <img src="img/logo.png"/>
             </div>
+            <div class="menu-icon">
+                <img src="img/icon-menu.png"/>
+            </div>
             <div class="scroll-horizontal">
-                <div class="section home" data-duration="1" >
+                <!--div class="section home" data-duration="1" >
                     <div class="section__viewport">
                         <div class="scene-static ">
                             <div class="home-bg"></div>
@@ -34,374 +81,692 @@
                         </div>
                     </div>
                       
-                </div>
-                <div class="section" data-duration="10" >
-                    <svg class="bg">
-                        
-                        <image x="0" y="0" width="100%" height="100%" clip-path="url(#clipping)" xlink:href="img/bg-about.jpg"></image>
-                    </svg>
+                </div-->
+                <div class="section" data-duration="12" >
+
+                    <div class="bg-wrapper">
+
+                        <svg class="bg" clip-path="url(#clipping)">
+                            
+                            <g class="bg__wrap" >
+                            
+                                <image width="2500" height="900" xlink:href="img/bg-about.jpg"></image>
+
+                                <image width="2500" height="900" xlink:href="img/bg-about-people.jpg" class="bg__people--highlight" id="bg-people" style="mask:url(#people-highlight__mask)"></image>
+                            </g>
+                        </svg>
+                    </div>
+                    
 
                     <div class="section__viewport">
+                        
+                        <div class="nav-scenes"></div>
+                        
                         <div class="scene-scroll">
-                            <div class="scene about__landing" data-duration="1">
-                                <img class="about__landing--img" src="img/about-img1.png"/>
-
-                                <div class="about__landing--circle"></div>
-
-                                <div class="about__landing--line--wht ani-object white-line__main"
-                                    data-duration="0.25" 
-                                    data-start="0" 
-                                    data-style-start="width:'0%'" 
-                                    data-style-end="width:'14%'">
-                                </div>
-
-                                <div class="about__landing--line--blue ani-object blue-line__main"
-                                    data-duration="0.25" 
-                                    data-start="0.25" 
-                                    data-style-start="width:'0%'" 
-                                    data-style-end="width:'16%'">
-                                </div>
-
-                                <div class="about__landing--arrow">
-                                    <img class="center__pos" src="img/about-arrow.png"/>
-                                </div>
-
-                            </div>
-
-                            <div class="scene about__why" data-duration="1.25">
-                                <table class="about__why--table">
+                            
+                            <div class="scene home" data-duration="1">
+                                <table class="layout-table">
                                     <tr>
                                         <td>
-                                            <div class="about__why--line1 white-line__main ani-object"
-                                                data-duration="0.25" 
-                                                data-start="0.25" 
-                                                data-style-start="width:'0%'" 
-                                                data-style-end="width:'100%'">
-                                            </div>
+                                            <div class="spacer"></div>
+                                        </td>
+                                        <td class="home__title__cell">
+                                            <div class="home__title position-center">
+                                                <img class="home__title__line" src="img/home-txt-the.png"/>
+                                                <img class="home__title__line" src="img/home-txt-market.png"/>
+                                                <img class="home__title__line" src="img/home-txt-auto.png"/>
+                                                <img class="home__title__line" src="img/home-txt-agency.png"/>
+                                                <img class="home__title__line" src="img/home-txt-copy.png"/>
 
-                                            <div class="about__why--lineblue1 blue-line__main ani-object"
-                                                data-duration="0.5" 
-                                                data-start="0.5" 
-                                                data-style-start="width:'0%'" 
-                                                data-style-end="width:'100%'">
+                                                <div class="home__title__circle">
+                                                    <svg  class="home__title__arrow" width="48" height="48">
+                                                        <path  d="M18.849,33.585l7.882-9.923l-7.882-9.924h2.716l7.883,9.924l-7.883,9.923H18.849z"
+                                                        />
+                                                    </svg>
+
+                                                </div>
                                             </div>
                                         </td>
-                                        <td class="about__why--cellfix">
-                                            <div class="about__why--textbox">
-                                                <div class="about__why--textbox--border ani-object"
+                                        <td>
+                                            <div class="home__line animate-object main-line__white"
+                                                data-duration="0.25" 
+                                                data-start="0" 
+                                                data-style-start="width:'0%'" 
+                                                data-style-end="width:'100%'">
+
+                                                <div class="main-line__blue animate-object"
                                                     data-duration="0.25" 
-                                                    data-start="0.5" 
+                                                    data-start="0.25" 
                                                     data-style-start="width:'0%'" 
                                                     data-style-end="width:'100%'">
                                                 </div>
-
-                                                <img class="about__why--text center__pos ani-object" src="img/about-why-text.png"
-                                                    data-duration="0.25" 
-                                                    data-start="1" 
-                                                    data-style-start="top:'100%', opacity: 0" 
-                                                    data-style-end="top:'50%', opacity: 1"/>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div class="about__why--line2 white-line__main  ani-object"
-                                                data-duration="0.25" 
-                                                data-start="1.25" 
-                                                data-style-start="width:'0%'" 
-                                                data-style-end="width:'100%'">
-                                            </div>
-
-                                            <div class="about__why--lineblue2 blue-line__main  ani-object"
-                                                data-duration="0.25" 
-                                                data-start="1.5" 
-                                                data-style-start="width:'0%'" 
-                                                data-style-end="width:'100%'">
                                             </div>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
 
-                            <div class="scene about__single" data-duration="2">
-                                <div class="about__single--line1 white-line__main ani-object"
-                                    data-duration="0.6" 
-                                    data-start="1.5" 
-                                    data-style-start="width:'0%'" 
-                                    data-style-end="width:'60%'">
-                                </div>
+                            <div class="scene about__digital-rev" data-duration="2" data-stop=".75">
+                                <table class="layout-table">
+                                    <tr>
+                                        <td>
+                                            <div class="animate-object main-line__white"
+                                                data-duration="0.25" 
+                                                data-start="0.25" 
+                                                data-style-start="width:'0%'" 
+                                                data-style-end="width:'100%'">
 
+                                                <div class="main-line__blue animate-object"
+                                                    data-duration="0.5" 
+                                                    data-start="0.5" 
+                                                    data-style-start="width:'0%'"
+                                                    data-style-end="width:'100%'">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="about__dig-rev__cell">
+                                            <div class="about__dig-rev__box-wrapper animate-object" 
+                                                    data-duration="0.25" 
+                                                    data-start="1.1" 
+                                                    data-style-start="width:'0px'" 
+                                                    data-style-end="width:'647px'">
+                                                <div class="box-wrapper__inner">
+                                                    <div class="about__dig-rev__box2">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="about__dig-rev__box-wrapper animate-object" 
+                                                    data-duration="0.25" 
+                                                    data-start="1" 
+                                                    data-style-start="width:'0px'" 
+                                                    data-style-end="width:'647px'">
+                                                <div class="box-wrapper__inner">
+                                                    <div class="about__dig-rev__box1">
+                                                    </div>
+                                                </div>
+                                            </div>
 
+                                            <div class="about__dig-rev__text position-center animate-object" 
+                                                    data-duration="0.5" 
+                                                    data-start="1" 
+                                                    data-style-start="opacity:0" 
+                                                    data-style-end="opacity:1"
+                                                    data-callfunc="call:'showSubNav'">
+                                                <img src="img/about-txt-digital-rev.png"/>
+                                            </div>
+                                            
+                                        </td>
+                                        <td>
+                                            <div class="animate-object main-line__white"
+                                                data-duration="0.25" 
+                                                data-start="1.75" 
+                                                data-style-start="width:'0%'" 
+                                                data-style-end="width:'100%'">
 
-                                <div class="about__single--text ani-object"
+                                                <div class="main-line__blue animate-object"
+                                                    data-duration="0.25" 
+                                                    data-start="2" 
+                                                    data-style-start="width:'0%'" 
+                                                    data-style-end="width:'100%'">
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="scene about__single" data-duration="2" data-stop=".5">
+
+                
+                                <div class="lines-group lines__single showSingleA animate-object"
                                     data-duration="0.25" 
-                                    data-start="1.75" 
-                                    data-style-start="top:'55.5%', opacity: -1" 
-                                    data-style-end="top:'50%', opacity: 1">
-
-                                    <img src="img/about-single-text.png"/>
-                                </div>
-
-                                <div class="about__single--line--angle white-line-angle ani-object"
-                                    data-duration="0.1" 
-                                    data-start="1.87" 
-                                    data-style-start="height:'0px'" 
-                                    data-style-end="height:'50px'">
-                                </div>
-
-                                <div class="about__single--line--angle--blue blue-line-angle ani-object"
-                                    data-duration="0.1" 
-                                    data-start="2.14" 
-                                    data-style-start="height:'0px'" 
-                                    data-style-end="height:'50px'">
-                                </div>
-
-                                <div class="about__single--a about__leter ani-object"
-                                    data-duration="0.05" 
-                                    data-start="2.24" 
-                                    data-style-start="opacity:0" 
-                                    data-style-end="opacity:1">
-
-                                    <img src="img/letter-a.png"/>
-                                </div>
-
-                                <div class="about__single--line2 white-line__main ani-object"
-                                    data-duration="0.4" 
                                     data-start="3" 
-                                    data-style-start="width:'0%'" 
-                                    data-style-end="width:'40%'">
-                                </div>
-
-                                <div class="about__single--lineblue1 blue-line__main ani-object"
-                                    data-duration="0.6" 
-                                    data-start="1.75" 
-                                    data-style-start="width:'0%'" 
-                                    data-style-end="width:'60%'">
-                                </div>
-
-                                <div class="about__single--lineblue2 blue-line__main ani-object"
-                                    data-duration="0.4" 
-                                    data-start="3.25" 
-                                    data-style-start="width:'0%'" 
-                                    data-style-end="width:'40%'">
-                                </div>
-                            </div>
-
-                            <div class="scene about__segmented" data-duration="2">
-                                <div class="about__segmented--line1 white-line__main ani-object"
-                                    data-duration="0.6" 
-                                    data-start="3.5" 
-                                    data-style-start="width:'0%'" 
-                                    data-style-end="width:'60%'">
-                                </div>
-
-
-
-                                <div class="about__single--text ani-object"
-                                    data-duration="0.25" 
-                                    data-start="3.75" 
-                                    data-style-start="top:'55.5%', opacity: -1" 
-                                    data-style-end="top:'50%', opacity: 1">
-
-                                    <img src="img/about-segmented-text.png"/>
-                                </div>
-
-                                <div class="about__segmented--angle1 white-line-angle ani-object"
-                                    data-duration="0.1" 
-                                    data-start="3.87" 
-                                    data-style-start="height:'0px'" 
-                                    data-style-end="height:'50px'">
-                                </div>
-
-                                <div class="about__segmented--angle1--blue blue-line-angle ani-object"
-                                    data-duration="0.1" 
-                                    data-start="4.05" 
-                                    data-style-start="height:'0px'" 
-                                    data-style-end="height:'50px'">
-                                </div>
-
-                                <div class="about__segmented--a about__leter ani-object"
-                                    data-duration="0.05" 
-                                    data-start="4.15" 
                                     data-style-start="opacity:0" 
-                                    data-style-end="opacity:1">
-                                    
+                                    data-style-end="opacity:.5">
+
+                                    <div class="lines__single--hide animate-object"
+                                        data-duration="0.1" 
+                                        data-start="4" 
+                                        data-style-start="opacity:1" 
+                                        data-style-end="opacity:0">
+
+                                        <svg class="lines__svg"
+                         width="1109px" height="316.1px" viewBox="0 0 1109 316.1"  preserveAspectRatio="none" data-width="1109" data-height="316">
+                                            <g class="lines__container">
+                                                <path class="line-swiggly reverse-direction" d="M500.12,17.259
+                                                    c-13,25.987-37.818,34.732-61,39.979C386.119,69.235,369,98.1,369,98.1"/>
+                                                <path class="line-swiggly" d="M0,230.1
+                                                    c14-66,164.205-147.881,314-108c154,41,172.138-29.117,177.999-64c4.195-24.968,6-38,6-38"/>
+                                                <path class="line-swiggly" d="M72,102.1
+                                                    c41.999-20,96-50,183.999-47c88,3,179.001,14,241.001-30"/>
+                                                <path class="line-swiggly" d="M335,154.1
+                                                    c64,24.008,142.31,28.641,181-33c33.624-53.569-20.881-78.854-18.881-98.843"/>
+                                                <path class="line-swiggly" d="M1109,113.1
+                                                    c-53.002-92.951-312.877-34.872-394.878-33.873c-66.75,0.814-152.002-9.994-176.002-25.986c-24-15.991-27-17.99-38-35.981"/>
+                                                <path class="line-swiggly reverse-direction" d="M499.121,18.259
+                                                    c0,0-6.747,31.558-18.12,37.841C443,77.094,437,81.106,440,103.1"/>
+                                                <path class="line-swiggly" d="M258,22.1
+                                                    c49,16.997,146.12,27.143,177.119,21.146c31.001-5.997,48-6.997,64.001-25.987"/>
+                                                <path class="line-swiggly" d="M791,12.1
+                                                    c-73.001-30.984-127.745,5.223-169.878,23.15C587.947,49.365,539,46.094,524,35.1c-14.999-10.994-26-14-26-14"/>
+                                                <path class="line-swiggly" d="M1028,316.1
+                                                    C1006,281.118,970,169.085,784,199.1c-73.885,11.923-188.881-21.915-247.88-82.892c-40.942-42.315-33-73.962-38-101.947"/>
+                                                <path class="line-swiggly" d="M592,198.1
+                                                    c4-49.989-78.999-51.016-106-81c-27-29.984,2.121-81.843,9.12-95.843"/>
+                                                <path class="line-swiggly reverse-direction" d="M500,24.1
+                                                    c0,0,23.534,0.646,55.121,4.154c36,3.997,75.183,5.574,99.001,38.979C719.458,158.867,869,126.1,869,126.1"/>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </div>
+                                
+                                <div class="animate-object main-line__white"
+                                    data-duration="1" 
+                                    data-start="2" 
+                                    data-style-start="width:'0%'" 
+                                    data-style-end="width:'60%'">
+                                </div>
+
+                                <div class="animate-object main-line__white"
+                                    style="left: 60%"
+                                    data-duration="0.4" 
+                                    data-start="3.75" 
+                                    data-style-start="width:'0%'" 
+                                    data-style-end="width:'40%'">
+                                </div>
+
+                                <div class="about__single__diagonal line-diagonal-group animate-object"
+                                    data-duration="0.1" 
+                                    data-start="2.66" 
+                                    data-style-start="height:'0px'" 
+                                    data-style-end="height:'40px'">
+
+                                    <div class="line-diagonal__blue animate-object"
+                                        data-duration="0.1" 
+                                        data-start="3" 
+                                        data-style-start="height:'0px'" 
+                                        data-style-end="height:'40px'"></div>
+                                </div>
+
+                                <div class="main-line__blue animate-object"
+                                    data-duration=".75" 
+                                    data-start="2.25" 
+                                    data-style-start="width:'0%'" 
+                                    data-style-end="width:'39%'">
+                                </div>
+
+                                <div class="main-line__blue animate-object"
+                                    style="left: 39%"
+                                    data-duration="0.75" 
+                                    data-start="4" 
+                                    data-style-start="width:'0%'" 
+                                    data-style-end="width:'61%'"
+                                    data-callfunc="call:'animatePeople', cls:'showSingleA', active:'false'">
+                                </div>
+
+                                <div class="about__letter animate-object"
+                                    data-duration=".25" 
+                                    data-start="3" 
+                                    data-style-start="opacity:0" 
+                                    data-style-end="opacity:1"
+                                    data-callfunc="call:'animatePeople', cls:'showSingleA', activate:'true'">
+
                                     <img src="img/letter-a.png"/>
                                 </div>
 
-                                <div class="about__segmented--angle2 white-line-angle ani-object"
-                                    data-duration="0.1" 
-                                    data-start="4.05" 
-                                    data-style-start="height:'0px'" 
-                                    data-style-end="height:'50px'">
-                                </div>
 
-                                <div class="about__segmented--angle2--blue blue-line-angle ani-object"
-                                    data-duration="0.1" 
-                                    data-start="4.25" 
-                                    data-style-start="height:'0px'" 
-                                    data-style-end="height:'50px'">
-                                </div>
+                                <div class="about__copy__wrap">
 
-                                <div class="about__segmented--b about__leter ani-object"
-                                    data-duration="0.05" 
-                                    data-start="4.35" 
+                                    <img src="img/about-single-title.png" class="animate-object"
+                                    data-duration=".5" 
+                                    data-start="2.25" 
+                                    data-style-start="opacity:0, left:'-50%'" 
+                                    data-style-end="opacity:1, left:'0%'"/>
+
+                                    <img src="img/about-single-text.png" class="animate-object"
+                                    data-duration=".25" 
+                                    data-start="2.75" 
                                     data-style-start="opacity:0" 
-                                    data-style-end="opacity:1">
-                                    
-                                    <img src="img/letter-b.png"/>
+                                    data-style-end="opacity:1"/>
                                 </div>
 
-                                <div class="about__segmented--line2 white-line__main ani-object"
-                                    data-duration="0.4" 
-                                    data-start="5" 
-                                    data-style-start="width:'0%'" 
-                                    data-style-end="width:'40%'">
-                                </div>
-                                <div class="about__single--lineblue1 blue-line__main ani-object"
-                                    data-duration="0.6" 
-                                    data-start="3.75" 
-                                    data-style-start="width:'0%'" 
-                                    data-style-end="width:'60%'">
-                                </div>
-                                
-                                <div class="about__segmented--lineblue2 blue-line__main ani-object"
-                                    data-duration="0.4" 
-                                    data-start="5.25" 
-                                    data-style-start="width:'0%'" 
-                                    data-style-end="width:'40%'">
-                                </div>
                             </div>
 
-                            <div class="scene about__dynamic" data-duration="2">
-                                <div class="about__single--line1 white-line__main ani-object"
-                                    data-duration="0.6" 
-                                    data-start="5.5" 
+                            <div class="scene about__segmented" data-duration="3" data-stop="2.75">
+                
+                                <div class="lines-group linesA__segmented showSegmentedA showSegmentedAnB animate-object"
+                                    data-duration="0.25" 
+                                    data-start="5.25" 
+                                    data-style-start="opacity:0" 
+                                    data-style-end="opacity:.5">
+
+                                    <div class="linesA__segmented--hide animate-object"
+                                        data-duration="0.1" 
+                                        data-start="7" 
+                                        data-style-start="opacity:1" 
+                                        data-style-end="opacity:0">
+
+                                        <svg class="lines__svg"
+                         width="596.066px" height="319.183px" viewBox="0 0 596.066 319.183" preserveAspectRatio="none" data-width="596" data-height="319">
+                                            <g class="lines__container">
+                                                <g>
+                                                    <path class="line-swiggly reverse-direction" d="M332.036,2.997c13.002,25.97,34.338,40.098,55.964,49.967
+                                                        c46.004,20.993,57,40,57,40"/>
+                                                    <path class="line-swiggly" d="M0,62.035c117.035-42.586,205.333,35.979,294.032-23.079
+                                                        c24.003-15.982,27.003-17.979,38.004-35.959"/>
+                                                    <path class="line-swiggly  reverse-direction" d="M333.036,3.995c0,0,1.964,22.612,5.964,34.969
+                                                        c11,33.986,32.002,24.016,39,45"/>
+                                                    <path class="line-swiggly" d="M596.066,191.106c-47.98,5.229-69.02-141.137-199.023-162.14
+                                                        c-31.176-5.036-48.005-6.992-64.007-25.97"/>
+                                                    <path class="line-swiggly" d="M21.002,220.122c43.862-69.694,207.035-76.222,275.029-118.238
+                                                        C346.098,70.946,329.036,27.968,334.036,0"/>
+                                                    <path class="line-swiggly  reverse-direction" d="M332.036,9.005c-9.001,23.013-12.002,40.021-49.005,69.037
+                                                        c-37.004,29.016-75.007,70.038-80.009,125.067c-5,55.03,7.003,103.065,23.005,116.073"/>
+                                                    <path class="line-swiggly  reverse-direction" d="M331.037,2.997c0,0-22.417,7.481-54.007,10.987
+                                                        c-36.004,3.995-58.007,8.074-88.009,36.043C163.683,73.646,82,87.964,82,87.964"/>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <div class="lines-group linesB__segmented showSegmentedB showSegmentedAnB animate-object"
+                                    data-duration="0.25" 
+                                    data-start="6.25" 
+                                    data-style-start="opacity:0" 
+                                    data-style-end="opacity:.5">
+
+                                    <div class="linesB__segmented--hide animate-object"
+                                        data-duration="0.1" 
+                                        data-start="7" 
+                                        data-style-start="opacity:1" 
+                                        data-style-end="opacity:0">
+
+                                        <svg class="lines__svg"
+                         width="542.001px" height="302.964px" viewBox="0 0 542.001 302.964" preserveAspectRatio="none" data-width="542" data-height="302">
+                                            <g class="lines__container">
+                                                <g>
+                                                    <path class="line-swiggly reverse-direction" d="M115.074,3.002c-13.002,26.014-37.247,39.234-61.006,40.021 C13.73,44.36,0,58.964,0,58.964"/>
+                                                    <path class="line-swiggly" d="M542.001,100.964c-53.007-93.05-182.992-28-265.001-27
+                                                        c-66.755,0.814-99.919-18.934-123.922-34.942s-27.002-18.01-38.004-36.02"/>
+                                                    <path class="line-swiggly reverse-direction" d="M111,7.964c0,0-4.065,26.548-13,36
+                                                        c-17.334,18.34-22.261,36.415-7.928,48.09"/>
+                                                    <path class="line-swiggly" d="M466.001,302.964c-22.003-35.019-68.993-51.984-135.001-65
+                                                        c-73.444-14.482-106.918-60.885-179.923-135.909C109.988,59.828,118.075,28.016,113.073,0"/>
+                                                    <path class="line-swiggly" d="M159,155.964c-16.001-15.008-27.925-15.889-37.926-48.906
+                                                        c-10-33.018-11.001-79.042-9-99.053"/>
+                                                    <path class="line-swiggly reverse-direction" d="M116.074,3.002c0,0,22.416,7.494,54.006,11.006
+                                                        c36.004,4.002,69.007,11.006,99.011,39.021c25.338,23.659,42.005,50.033,42.005,50.033"/>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </div>
+                                
+                                <div class="animate-object main-line__white"
+                                    data-duration="1" 
+                                    data-start="4.15" 
                                     data-style-start="width:'0%'" 
                                     data-style-end="width:'60%'">
                                 </div>
 
-                                <div class="about__single--text ani-object"
-                                    data-duration="0.25" 
-                                    data-start="5.75" 
-                                    data-style-start="top:'55.5%', opacity: -1" 
-                                    data-style-end="top:'50%', opacity: 1">
-
-                                    <img src="img/about-dynamic-text.png"/>
-                                </div>
-
-
-                                <div class="about__dynamic--angle1 white-line-angle ani-object"
-                                    data-duration="0.14" 
-                                    data-start="5.87" 
-                                    data-style-start="height:'0px'" 
-                                    data-style-end="height:'140px'">
-                                </div>
-
-                                <div class="about__dynamic--angle2 white-line-angle ani-object"
-                                    data-duration="0.14" 
-                                    data-start="5.87" 
-                                    data-style-start="height:'0px'" 
-                                    data-style-end="height:'140px'">
-                                </div>
-
-                                <div class="about__dynamic--angle3 line-rotate-box">
-                                    <div class="line-rotate--angle ani-object"
-                                        data-duration="0.12" 
-                                        data-start="5.9" 
-                                        data-style-start="height:'0px'" 
-                                        data-style-end="height:'140px'">
-
-                                    </div>
-                                </div>
-
-                                <div class="about__dynamic--angle4 line-rotate-box">
-                                    <div class="line-rotate--angle ani-object"
-                                        data-duration="0.12" 
-                                        data-start="5.95" 
-                                        data-style-start="height:'0px'" 
-                                        data-style-end="height:'140px'">
-
-                                    </div>
-                                </div>
-
-                                
-
-                                <div class="about__dynamic--angle1--blue blue-line-angle ani-object"
-                                    data-duration="0.14" 
-                                    data-start="6.14" 
-                                    data-style-start="height:'0px'" 
-                                    data-style-end="height:'140px'">
-                                </div>
-
-                                <div class="about__dynamic--angle3 line-rotate-box">
-                                    <div class="line-rotate--angle blue-line ani-object"
-                                        data-duration="0.12" 
-                                        data-start="6.16" 
-                                        data-style-start="height:'0px'" 
-                                        data-style-end="height:'140px'">
-
-                                    </div>
-                                </div>
-
-                                <div class="about__dynamic--angle4 line-rotate-box">
-                                    <div class="line-rotate--angle blue-line ani-object"
-                                        data-duration="0.12" 
-                                        data-start="6.2" 
-                                        data-style-start="height:'0px'" 
-                                        data-style-end="height:'140px'">
-
-                                    </div>
-                                </div>
-
-                                <div class="about__dynamic--angle2 blue-line-angle ani-object"
-                                    data-duration="0.14" 
-                                    data-start="6.16" 
-                                    data-style-start="height:'0px'" 
-                                    data-style-end="height:'140px'">
-                                </div>
-
-                                
-
-
-                                <div class="about__single--line2 white-line__main ani-object"
+                                <div class="animate-object main-line__white"
+                                    style="left: 60%"
                                     data-duration="0.4" 
                                     data-start="7" 
                                     data-style-start="width:'0%'" 
                                     data-style-end="width:'40%'">
                                 </div>
 
-                                <div class="about__single--lineblue1 blue-line__main ani-object"
-                                    data-duration="0.6" 
-                                    data-start="5.75" 
-                                    data-style-start="width:'0%'" 
-                                    data-style-end="width:'60%'">
+                                <div class="about__segmented__diagonal line-diagonal-group animate-object"
+                                    data-duration="0.1" 
+                                    data-start="4.65" 
+                                    data-style-start="height:'0px'" 
+                                    data-style-end="height:'40px'">
+
+                                    <div class="line-diagonal__blue animate-object"
+                                        data-duration="0.1" 
+                                        data-start="5.25" 
+                                        data-style-start="height:'0px'" 
+                                        data-style-end="height:'40px'"></div>
                                 </div>
-                                
-                                <div class="about__single--lineblue2 blue-line__main ani-object"
+
+                                <div class="about__segmented__diagonal2 line-diagonal-group animate-object"
+                                    data-duration="0.1" 
+                                    data-start="5.02" 
+                                    data-style-start="height:'0px'" 
+                                    data-style-end="height:'40px'">
+
+                                    <div class="line-diagonal__blue animate-object"
+                                        data-duration="0.1" 
+                                        data-start="6.25" 
+                                        data-style-start="height:'0px'" 
+                                        data-style-end="height:'40px'"></div>
+                                </div>
+
+                                <div class="main-line__blue animate-object"
+                                    data-duration=".5" 
+                                    data-start="4.75" 
+                                    data-style-start="width:'0%'" 
+                                    data-style-end="width:'28%'">
+                                </div>
+
+                                <div class="main-line__blue animate-object"
+                                    style="left: 28%"
+                                    data-duration="0.25" 
+                                    data-start="6" 
+                                    data-style-start="width:'0%'" 
+                                    data-style-end="width:'23%'">
+                                </div>
+
+                                <div class="main-line__blue animate-object"
+                                    style="left: 51%"
                                     data-duration="0.4" 
-                                    data-start="7.25" 
+                                    data-start="7.1" 
                                     data-style-start="width:'0%'" 
-                                    data-style-end="width:'40%'">
+                                    data-style-end="width:'49%'"
+                                    data-callfunc="call:'animatePeople', cls:'showSegmentedAnB', activate:'false'">
                                 </div>
-                                
+
+                                <div class="letter__segmentedA about__letter animate-object"
+                                    data-duration=".25" 
+                                    data-start="5.25" 
+                                    data-style-start="opacity:0" 
+                                    data-style-end="opacity:1"
+                                    data-callfunc="call:'animatePeople', cls:'showSegmentedA', activate:'true'">
+
+                                    <img src="img/letter-a.png"/>
+                                </div>
+
+                                <div class="letter__segmentedB about__letter animate-object"
+                                    data-duration=".25" 
+                                    data-start="6.25" 
+                                    data-style-start="opacity:0" 
+                                    data-style-end="opacity:1"
+                                    data-callfunc="call:'animatePeople', cls:'showSegmentedB', activate:'true'">
+
+                                    <img src="img/letter-b.png"/>
+                                </div>
+
+
+                                <div class="about__copy__wrap">
+
+                                    <img src="img/about-segmented-title.png" class="animate-object"
+                                    data-duration=".5" 
+                                    data-start="4.4" 
+                                    data-style-start="opacity:0, left:'-50%'" 
+                                    data-style-end="opacity:1, left:'0%'"/>
+
+                                    <img src="img/about-segmented-text.png" class="animate-object"
+                                    data-duration=".25" 
+                                    data-start="4.9" 
+                                    data-style-start="opacity:0" 
+                                    data-style-end="opacity:1"/>
+                                </div>
+
                             </div>
 
-                            <div class="scene about__end" data-duration="2.5">
-                                <div class="about__single--line1 white-line__main ani-object"
+                            <div class="scene about__dynamic" data-duration="3" data-stop="2">
+                
+                                <div class="lines-group lines__dynamic showDynamic animate-object">
+
+                                    <!--data-duration="0.25" 
+                                    data-start="3" 
+                                    data-style-start="opacity:0" 
+                                    data-style-end="opacity:.5"-->
+
+                                    <div class="lines__dynamic--hide animate-object">
+                                        <!--
+                                        data-duration="0.1" 
+                                        data-start="4" 
+                                        data-style-start="opacity:1" 
+                                        data-style-end="opacity:0"-->
+
+                                        <svg class="lines__svg"
+                         width="1115.107px" height="334px" viewBox="0 0 1115.107 334" preserveAspectRatio="none" data-width="1115" data-height="334">
+                                            <g class="lines__container">
+                                                <path class="line-swiggly" d="M953.107,11c16,122,89.001,7,162,107"/>
+                                                <path class="line-swiggly" d="M738.107,171c0-9,3.867-34.219,17-42c27-16,17.356-48.603,19-77
+                                                    c2.586-44.761-50-48-50-48"/>
+                                                <path class="line-swiggly" d="M880.107,13c112,79,35.082,147.545,113,207
+                                                    c63.963,48.808,59,95,61,101"/>
+                                                <path class="line-swiggly" d="M800.107,9c-5.815,11.628-20.208,67.577,29,94
+                                                    c15.586,8.37,54,20,54,20"/>
+                                                <path class="line-swiggly" d="M667.107,105c9-11,26.696-47.759-6-47c-59.666,1.383-5-40-6-51"/>
+                                                <path class="line-swiggly" d="M599.107,199c6-60-45.609-47.852-43-100c3.51-70.151,39-70,27-99"/>
+                                                <path class="line-swiggly" d="M454.108,107c1.999-12,39.643-4.598,42.999-45
+                                                    c2.907-34.994,20-46,18-52"/>
+                                                <path class="line-swiggly" d="M332.107,142c-19-8-18.36-36.961-12-57c20-63,141-32,118-75"/>
+                                                <path class="line-swiggly" d="M364.107,10c-72.802,107.369-126.358,137.392-117,195
+                                                    c9.656,59.442-17,129-17,129"/>
+                                                <path class="line-swiggly" d="M9.107,234c-27-25,7.902-50.869,80-72c155.957-45.717,205-41,205-153
+                                                    "/>
+                                                <path class="line-swiggly" d="M81.107,102c3-6,4.278-7.704,16-19c55-53,120-17,122-71"/>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </div>
+                                
+                                <div class="animate-object main-line__white"
+                                    data-duration="1.25" 
+                                    data-start="7.4" 
+                                    data-style-start="width:'0%'" 
+                                    data-style-end="width:'85%'">
+                                </div>
+
+                                <div class="animate-object main-line__white"
+                                    style="left: 80%"
+                                    data-duration="0.15" 
+                                    data-start="9" 
+                                    data-style-start="width:'0%'" 
+                                    data-style-end="width:'15%'">
+                                </div>
+
+                                <div class="about__dynamic__dia__wrap">
+
+                                    <div class="about__dynamic__diagonal1 line-diagonal-group animate-object"
+                                        data-duration="0.1" 
+                                        data-start="2.66" 
+                                        data-style-start="height:'0px'" 
+                                        data-style-end="height:'40px'">
+
+                                        <div class="line-diagonal__blue animate-object"
+                                            data-duration="0.1" 
+                                            data-start="3" 
+                                            data-style-start="height:'0px'" 
+                                            data-style-end="height:'40px'"></div>
+                                    </div>
+
+                                    <div class="about__dynamic__diagonal2 line-diagonal-group animate-object"
+                                        data-duration="0.1" 
+                                        data-start="2.66" 
+                                        data-style-start="height:'0px'" 
+                                        data-style-end="height:'40px'">
+
+                                        <div class="line-diagonal__blue animate-object"
+                                            data-duration="0.1" 
+                                            data-start="3" 
+                                            data-style-start="height:'0px'" 
+                                            data-style-end="height:'40px'"></div>
+                                    </div>
+
+                                    <div class="about__dynamic__diagonal3 line-diagonal-group animate-object"
+                                        data-duration="0.1" 
+                                        data-start="2.66" 
+                                        data-style-start="height:'0px'" 
+                                        data-style-end="height:'40px'">
+
+                                        <div class="line-diagonal__blue animate-object"
+                                            data-duration="0.1" 
+                                            data-start="3" 
+                                            data-style-start="height:'0px'" 
+                                            data-style-end="height:'40px'"></div>
+                                    </div>
+
+                                    <div class="about__dynamic__diagonal4 line-diagonal-group animate-object"
+                                        data-duration="0.1" 
+                                        data-start="2.66" 
+                                        data-style-start="height:'0px'" 
+                                        data-style-end="height:'40px'">
+
+                                        <div class="line-diagonal__blue animate-object"
+                                            data-duration="0.1" 
+                                            data-start="3" 
+                                            data-style-start="height:'0px'" 
+                                            data-style-end="height:'40px'"></div>
+                                    </div>
+
+                                    <div class="about__dynamic__diagonal5 line-diagonal-group animate-object"
+                                        data-duration="0.1" 
+                                        data-start="2.66" 
+                                        data-style-start="height:'0px'" 
+                                        data-style-end="height:'40px'">
+
+                                        <div class="line-diagonal__blue animate-object"
+                                            data-duration="0.1" 
+                                            data-start="3" 
+                                            data-style-start="height:'0px'" 
+                                            data-style-end="height:'40px'"></div>
+                                    </div>
+
+                                    <div class="about__dynamic__diagonal6 line-diagonal-group animate-object"
+                                        data-duration="0.1" 
+                                        data-start="2.66" 
+                                        data-style-start="height:'0px'" 
+                                        data-style-end="height:'40px'">
+
+                                        <div class="line-diagonal__blue animate-object"
+                                            data-duration="0.1" 
+                                            data-start="3" 
+                                            data-style-start="height:'0px'" 
+                                            data-style-end="height:'40px'"></div>
+                                    </div>
+
+                                    <div class="about__dynamic__diagonal7 line-diagonal-group animate-object"
+                                        data-duration="0.1" 
+                                        data-start="2.66" 
+                                        data-style-start="height:'0px'" 
+                                        data-style-end="height:'40px'">
+
+                                        <div class="line-diagonal__blue animate-object"
+                                            data-duration="0.1" 
+                                            data-start="3" 
+                                            data-style-start="height:'0px'" 
+                                            data-style-end="height:'40px'"></div>
+                                    </div>
+
+                                    <div class="about__dynamic__diagonal8 line-diagonal-group animate-object"
+                                        data-duration="0.1" 
+                                        data-start="2.66" 
+                                        data-style-start="height:'0px'" 
+                                        data-style-end="height:'40px'">
+
+                                        <div class="line-diagonal__blue animate-object"
+                                            data-duration="0.1" 
+                                            data-start="3" 
+                                            data-style-start="height:'0px'" 
+                                            data-style-end="height:'40px'"></div>
+                                    </div>
+
+                                    <div class="about__dynamic__diagonal9 line-diagonal-group animate-object"
+                                        data-duration="0.1" 
+                                        data-start="2.66" 
+                                        data-style-start="height:'0px'" 
+                                        data-style-end="height:'40px'">
+
+                                        <div class="line-diagonal__blue animate-object"
+                                            data-duration="0.1" 
+                                            data-start="3" 
+                                            data-style-start="height:'0px'" 
+                                            data-style-end="height:'40px'"></div>
+                                    </div>
+
+                                    <div class="about__dynamic__diagonal10 line-diagonal-group animate-object"
+                                        data-duration="0.1" 
+                                        data-start="2.66" 
+                                        data-style-start="height:'0px'" 
+                                        data-style-end="height:'40px'">
+
+                                        <div class="line-diagonal__blue animate-object"
+                                            data-duration="0.1" 
+                                            data-start="3" 
+                                            data-style-start="height:'0px'" 
+                                            data-style-end="height:'40px'"></div>
+                                    </div>
+
+                                    <div class="about__dynamic__diagonal11 line-diagonal-group animate-object"
+                                        data-duration="0.1" 
+                                        data-start="2.66" 
+                                        data-style-start="height:'0px'" 
+                                        data-style-end="height:'40px'">
+
+                                        <div class="line-diagonal__blue animate-object"
+                                            data-duration="0.1" 
+                                            data-start="3" 
+                                            data-style-start="height:'0px'" 
+                                            data-style-end="height:'40px'"></div>
+                                    </div>
+                                </div>
+                                <!--div class="main-line__blue animate-object"
+                                    data-duration=".75" 
+                                    data-start="2.25" 
+                                    data-style-start="width:'0%'" 
+                                    data-style-end="width:'39%'">
+                                </div>
+
+                                <div class="main-line__blue animate-object"
+                                    style="left: 39%"
+                                    data-duration="0.75" 
+                                    data-start="4" 
+                                    data-style-start="width:'0%'" 
+                                    data-style-end="width:'61%'"
+                                    data-callfunc="call:'animatePeople', cls:'showSingleA', active:'false'">
+                                </div>
+
+                                <div class="about__letter animate-object"
+                                    data-duration=".25" 
+                                    data-start="3" 
+                                    data-style-start="opacity:0" 
+                                    data-style-end="opacity:1"
+                                    data-callfunc="call:'animatePeople', cls:'showSingleA', activate:'true'">
+
+                                    <img src="img/letter-a.png"/>
+                                </div-->
+
+
+                                <div class="about__copy__wrap">
+
+                                    <img src="img/about-dynamic-title.png" class="animate-object"
+                                    data-duration=".5" 
+                                    data-start="2.25" 
+                                    data-style-start="opacity:0, left:'-50%'" 
+                                    data-style-end="opacity:1, left:'0%'"/>
+
+                                    <img src="img/about-dynamic-text.png" class="animate-object"
+                                    data-duration=".25" 
+                                    data-start="2.75" 
+                                    data-style-start="opacity:0" 
+                                    data-style-end="opacity:1"/>
+                                </div>
+
+                            </div>
+
+                            <!--div class="scene about__end" data-duration="2.5">
+                                <div class="about__single--line1 white-line__main animate-object"
                                     data-duration="0.5" 
                                     data-start="7.5" 
                                     data-style-start="width:'0%'" 
                                     data-style-end="width:'50%'">
                                 </div>
 
-                                <div class="about__single--lineblue1 blue-line__main ani-object"
+                                <div class="about__single--lineblue1 blue-line__main animate-object"
                                     data-duration="0.5" 
                                     data-start="7.65" 
                                     data-style-start="width:'0%'" 
                                     data-style-end="width:'50%'">
                                 </div>
 
-                                <div class="about__end--circle center__pos ani-object"
+                                <div class="about__end--circle center__pos animate-object"
                                     data-duration="0.5" 
                                     data-start="8" 
                                     data-style-start="width:'0px', height:'0px'" 
@@ -409,7 +774,7 @@
 
                                 </div>
 
-                                <div class="about__end--bubble bubble__email ani-object"
+                                <div class="about__end--bubble bubble__email animate-object"
                                     data-duration="0.2" 
                                     data-start="8.2" 
                                     data-style-start="width:'0px', height:'0px'" 
@@ -418,7 +783,7 @@
                                     <span class="center__pos">Email</span>
                                 </div>
 
-                                <div class="about__end--bubble bubble__mobile ani-object"
+                                <div class="about__end--bubble bubble__mobile animate-object"
                                     data-duration="0.2" 
                                     data-start="8.5" 
                                     data-style-start="width:'0px', height:'0px'" 
@@ -427,7 +792,7 @@
                                     <span class="center__pos">Mobile</span>
                                 </div>
 
-                                <div class="about__end--bubble bubble__agent ani-object"
+                                <div class="about__end--bubble bubble__agent animate-object"
                                     data-duration="0.2" 
                                     data-start="8.4" 
                                     data-style-start="width:'0px', height:'0px'" 
@@ -436,7 +801,7 @@
                                     <span class="center__pos">Live Agent</span>
                                 </div>
 
-                                <div class="about__end--bubble bubble__website ani-object"
+                                <div class="about__end--bubble bubble__website animate-object"
                                     data-duration="0.2" 
                                     data-start="8.2" 
                                     data-style-start="width:'0px', height:'0px'" 
@@ -446,7 +811,7 @@
                                 </div>
 
 
-                                <div class="about__end--bubble bubble__video ani-object"
+                                <div class="about__end--bubble bubble__video animate-object"
                                     data-duration="0.2" 
                                     data-start="8.3" 
                                     data-style-start="width:'0px', height:'0px'" 
@@ -455,7 +820,7 @@
                                     <span class="center__pos">Video</span>
                                 </div>
 
-                                <div class="about__end--bubble bubble__social ani-object"
+                                <div class="about__end--bubble bubble__social animate-object"
                                     data-duration="0.2" 
                                     data-start="8.5" 
                                     data-style-start="width:'0px', height:'0px'" 
@@ -464,7 +829,7 @@
                                     <span class="center__pos">Social</span>
                                 </div>
 
-                                <div class="about__end--bubble bubble__tradeshow ani-object"
+                                <div class="about__end--bubble bubble__tradeshow animate-object"
                                     data-duration="0.2" 
                                     data-start="8.4" 
                                     data-style-start="width:'0px', height:'0px'" 
@@ -473,7 +838,7 @@
                                     <span class="center__pos">Trade Show Capture</span>
                                 </div>
 
-                                <div class="about__end--bubble bubble__seo ani-object"
+                                <div class="about__end--bubble bubble__seo animate-object"
                                     data-duration="0.2" 
                                     data-start="8.3" 
                                     data-style-start="width:'0px', height:'0px'" 
@@ -481,7 +846,7 @@
 
                                     <span class="center__pos">SEO/SEM</span>
                                 </div>
-                            </div>
+                            </div-->
 
                         </div>
 
@@ -489,8 +854,8 @@
 
                 </div>
                 <div class="section" data-duration="2">
-                    <svg class="bg">
-                            <image  width="100%" height="100%" clip-path="url(#clipping)" xlink:href="img/bg-work-delta.jpg"></image>
+                    <svg class="bg"  clip-path="url(#clipping)">
+                            <image  width="2500" height="900" xlink:href="img/bg-work-delta.jpg"></image>
                         </svg>
                 </div>
                 <div class="section" data-duration="2" style="background:#0000ff;">
