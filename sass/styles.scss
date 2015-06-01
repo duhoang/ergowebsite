@@ -220,7 +220,7 @@ html, body {
     vector-effect: non-scaling-stroke;
     transition: all 1s;
     stroke-dasharray: 640px;
-    //stroke-dashoffset: -640px;
+    stroke-dashoffset: -640px;
 
     &.reverse-direction {
         stroke-dashoffset: 640px;

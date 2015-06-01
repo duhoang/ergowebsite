@@ -220,7 +220,8 @@ html, body {
   stroke: #0074c8;
   vector-effect: non-scaling-stroke;
   transition: all 1s;
-  stroke-dasharray: 640px; }
+  stroke-dasharray: 640px;
+  stroke-dashoffset: -640px; }
   .line-swiggly.reverse-direction {
     stroke-dashoffset: 640px; }
 
