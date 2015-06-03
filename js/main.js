@@ -1,4 +1,4 @@
-var width, height, screenWidth, scrollSum, lastSectionIndex = -1;
+var width, height, screenWidth, scrollSum, lastSectionIndex = -1, videoScale = 1.12;
 
 var sections = [];
 
@@ -152,9 +152,9 @@ function resizeBG(){
 
     $(".bg__wrap").attr({transform: "scale("+scale+") translate("+xPos+","+yPos+")"});
 
-    $("#clip-poly").attr("points", (svgWidth-width)+",0 0,"+height+" "+bgWidth+","+height+" "+bgWidth+","+0)
+    $("#clip-poly").attr("points", (svgWidth-width)+",0 0,"+height+" "+bgWidth+","+height+" "+bgWidth+","+0);
 
-    
+    $("#vid-loop").height(bgHeight * videoScale).css({transform:"translate(-3.9%,6.4%)"});
 
     $(".lines__svg").each(function(){
 
@@ -200,7 +200,7 @@ function setScrollPosition(){
             scrollAt - currentSection.offset;
 
         $(".scroll-horizontal").css({left: scrollLeft * -width});
-
+        
     }
 
     //Scroll inner scenes
@@ -211,7 +211,7 @@ function setScrollPosition(){
             createNav: sectionChanged
         });
     } else {
-        $(".nav-scenes").html("");
+        $(".sub-nav").removeClass("active");
     }
 }
 
@@ -239,7 +239,7 @@ function scrollScenes(state) {
                 sceneAt - currentScene.offset;
 
             $(".scene-scroll").css({left: scrollLeft * -screenWidth});
-            
+
         }  
         var nextScene = state.section.scenes[currentScene.index + 1];
 
@@ -281,7 +281,7 @@ function scrollScenes(state) {
 
                 if (d.callFunc && !d.callFuncActive) {
                     
-                    window[d.callFunc.call](d.callFunc.cls, d.callFunc.activate);
+                    window[d.callFunc.call](d.callFunc.arg, d.callFunc.activate);
 
                     d.callFuncActive = true;
                 }
@@ -296,7 +296,7 @@ function scrollScenes(state) {
 
                 if (d.start > sceneAt && d.callFuncActive) {
 
-                    window[d.callFunc.call](d.callFunc.cls, (d.callFunc.activate==="true" ? "false" : "true"));
+                    window[d.callFunc.call](d.callFunc.arg, (d.callFunc.activate==="true" ? "false" : "true"));
 
                     d.callFuncActive = false;
                 }
@@ -305,14 +305,15 @@ function scrollScenes(state) {
         });
 
         if (state.createNav) {
+
             createNavScenes({
-                currenSectionIndex: state.section.index,
                 scenes: state.section.scenes,
                 currentScene: currentScene,
                 sceneAt: sceneAt
             });
         } else {
-            $(".nav-scenes__item").removeClass("active").eq(currentScene.index).addClass("active");
+            
+            $(".sub-nav__item").removeClass("active").eq(currentScene.index).addClass("active");
         }
     
     } 
@@ -320,22 +321,27 @@ function scrollScenes(state) {
 
 function createNavScenes(state) {
 
-    $(".nav-scenes").html("");
+    $(".sub-nav").html("");
 
     _.each(state.scenes, function(d, i){
         
         var isActive = state.currentScene.index === d.index ? "active":"";
 
-        $(".nav-scenes").append("<div class='nav-scenes__item "+isActive+"' data-section="+state.currenSectionIndex+" data-scene="+(d.offset + d.navStopPoint + (i > 0 ? state.scenes[i-1].duration : 0))+"></div>");
+        $(".sub-nav").append("<div class='sub-nav__item "+isActive+"' data-scene="+(d.offset + d.navStopPoint + (i > 0 ? state.scenes[i-1].duration : 0))+"></div>");
     });
 
-    $(".nav-scenes__item").on("click", function(){
-        scrollToSection($(this).attr("data-section"), $(this).attr("data-scene"))
+    $(".sub-nav__item").on("click", function(){
+        scrollToArea($(this).attr("data-scene"));
     });
+
+    if(state.currentScene.index > 1) {
+        showSubNav();
+    }
 }
 
-function scrollToSection(section, scene) {
-    $("html, body").animate({scrollTop:scene * (height + 1) }, 1000);
+
+function scrollToArea(position) {
+    $("html, body").stop().animate({scrollTop: position * (height + 1) }, 1000);
 }
 
 
@@ -355,12 +361,30 @@ function animatePeople(cls, activate) {
         bg.classList.remove(cls);
         
         $("."+cls+", .bg-wrapper").removeClass("active");
+
+        if (cls==="showSegmentedAandB") {
+            $(".showSegmentedA, .bg-wrapper").addClass("active");
+        }
     }
 }
 
 function showSubNav() {
-    $(".nav-scenes").addClass("active");
+    $(".sub-nav").addClass("active");
 }
+
+function videoFunctions(arg, activate) {
+    
+    var myVideo = document.getElementById('vid-loop');
+
+    var command = activate === "true" ? arg : arg === "play" ? "pause" : "play";
+
+    if ( command === "play") {
+        myVideo.play();
+    } else {
+        myVideo.pause()
+    }
+}
+
 
 $(function() {
 
@@ -378,6 +402,12 @@ $(function() {
     $(".home__title__circle").on("click", function(){
         $("html, body").animate({scrollTop:1.5 * (height + 1) }, 1000);
     });
+
+    $(".end-button").on("click", function(){
+        scrollToArea(sections[1].offset + 1);
+    });
+
+    videoFunctions("pause");
     
 });
 
