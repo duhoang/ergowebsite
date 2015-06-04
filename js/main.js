@@ -341,7 +341,11 @@ function createNavScenes(state) {
 
 
 function scrollToArea(position) {
-    $("html, body").stop().animate({scrollTop: position * (height + 1) }, 1000);
+
+    var scrollPos = position * (height + 1);
+    var distance = Math.abs($(window).scrollTop() - scrollPos);
+
+    $("html, body").stop().animate({scrollTop: scrollPos }, distance/2);
 }
 
 
@@ -368,6 +372,21 @@ function animatePeople(cls, activate) {
     }
 }
 
+function bubbleLines(cls, activate) {
+
+    if (!cls) {return};
+
+    if (activate === "true") {
+        $(".about__end--wrapper").addClass(cls);
+    } else {
+        $(".about__end--wrapper").removeClass(cls);
+
+        if (cls==="mobileToAgent mobileToVideo") {
+            $(".about__end--wrapper").attr("class", "about__end--wrapper position-center");
+        }
+    }
+}
+
 function showSubNav() {
     $(".sub-nav").addClass("active");
 }
@@ -378,10 +397,12 @@ function videoFunctions(arg, activate) {
 
     var command = activate === "true" ? arg : arg === "play" ? "pause" : "play";
 
-    if ( command === "play") {
+    if (command === "play") {
         myVideo.play();
+
+
     } else {
-        myVideo.pause()
+        myVideo.pause();
     }
 }
 
